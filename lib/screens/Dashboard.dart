@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_to_flutter/screens/Settings.dart';
 
@@ -13,6 +14,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -31,7 +33,7 @@ class _DashboardState extends State<Dashboard> {
         ],
       ),
       body: Center(
-        child: Text("Dashboard"),
+        child: Text("Welcome to the Dashboard, ${user.email!}"),
       ),
     );
   }
